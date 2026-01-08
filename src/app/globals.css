@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --accent-blue: #3B82F6;
+  --accent-green: #22C55E;
+  --accent-pink: #EC4899;
+  --accent-orange: #F97316;
+  --accent-purple: #8B5CF6;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "VT323", "Courier New", monospace;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+}
+
+h1, h2, h3 {
+  font-family: "Press Start 2P", monospace;
+}
+
+/* Pixelated rendering for sprites */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* Subtle bounce animation for walking */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 0.15s ease-in-out;
+}
+
+/* Retro scanline effect */
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+}
+
+/* Custom scrollbar - retro style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+  border: 2px solid #2d2d4a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a6a;
+  border: 2px solid #2d2d4a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5a8a;
+}
+
+/* Retro game-style background pattern */
+.game-bg {
+  background-color: #1a1a2e;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Glow effect for UI elements - retro CRT style */
+.glow {
+  box-shadow: 
+    0 0 5px rgba(59, 130, 246, 0.5),
+    0 0 10px rgba(59, 130, 246, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Title gradient - BBT inspired */
+.title-gradient {
+  background: linear-gradient(135deg, #3B82F6 0%, #EC4899 50%, #F97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Retro button style */
+.retro-button {
+  background: linear-gradient(180deg, #4a4a6a 0%, #3a3a5a 100%);
+  border: 3px solid;
+  border-color: #6a6a8a #2a2a4a #2a2a4a #6a6a8a;
+  box-shadow: 
+    inset 1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.1s;
+}
+
+.retro-button:active {
+  border-color: #2a2a4a #6a6a8a #6a6a8a #2a2a4a;
+  transform: translateY(1px);
+}
+
+/* Panel styling - Game Boy style */
+.game-panel {
+  background: linear-gradient(180deg, #2a2a3a 0%, #1a1a2a 100%);
+  border: 3px solid;
+  border-color: #4a4a5a #1a1a2a #1a1a2a #4a4a5a;
+  box-shadow: 
+    4px 4px 0 rgba(0, 0, 0, 0.3),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Character info cards */
+.character-card {
+  background: linear-gradient(135deg, rgba(30, 30, 50, 0.9) 0%, rgba(20, 20, 40, 0.9) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.character-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Location labels on map */
+.location-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Main layout grid */
+.main-layout {
+  display: grid !important;
+  grid-template-columns: 280px 640px 320px !important;
+  gap: 24px !important;
+  justify-content: center !important;
+  align-items: start !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 1280px) {
+  .main-layout {
+    grid-template-columns: 1fr !important;
+    max-width: 640px !important;
+  }
+}
+
+.sidebar-left, .sidebar-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Retro text styles */
+.retro-text {
+  font-family: "VT323", monospace;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+
+/* Pulsing animation for active elements */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+  }
+}.pulse-active {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Day/Night transition */
+.day-overlay {
+  transition: background-color 2s ease;
+}
+
+/* Speech bubble style */
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  color: #000;
+  border: 3px solid #000;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #000 transparent transparent;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 22px;
+  border-width: 8px 8px 0;
+  border-style: solid;
+  border-color: #fff transparent transparent;
+}
+
+/* Memory stream styling */
+.memory-item {
+  border-left: 3px solid;
+  padding-left: 8px;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.memory-item.observation { border-color: #3B82F6; }
+.memory-item.reflection { border-color: #8B5CF6; }
+.memory-item.plan { border-color: #22C55E; }
+.memory-item.conversation { border-color: #EC4899; }
